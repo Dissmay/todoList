@@ -8,7 +8,6 @@
 <script>
  export default{
      props:['idTodo'],
-
        methods:{
            cancelMethod(){
                this.$store.dispatch('modalDeleteClose')

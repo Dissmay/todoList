@@ -33,7 +33,7 @@ export default {
             state.modalDelete = false
         },
         deleteTodo(state, payload){
-            let todos = JSON.parse(localStorage.getItem("todos")) 
+            let todos = JSON.parse(localStorage.getItem("todos"))
             let todosNew = todos.filter(todo => todo.idTodo.toString() !== payload.toString())
             let serialObj = JSON.stringify(todosNew)
             localStorage.setItem("todos", serialObj);
@@ -43,75 +43,74 @@ export default {
             state.idTodo = payload
         },
         editTodo(state, payload){
-            let todos = JSON.parse(localStorage.getItem("todos")) 
+            let todos = JSON.parse(localStorage.getItem("todos"))
             let todoIdxLocal = todos.findIndex(todos =>{
-                return todos.idTodo === payload.idTodo
+                    return todos.idTodo === payload.idTodo
             })
-                todos.splice( todoIdxLocal, 1, payload )
+            todos.splice( todoIdxLocal, 1, payload )
             let serialObj = JSON.stringify(todos)
             localStorage.setItem("todos", serialObj);
-           
+
             let todoIdx =  state.todos.findIndex(todos =>{
-                return todos.idTodo === payload.idTodo
+                    return todos.idTodo === payload.idTodo
             })
             state.todos.splice( todoIdx, 1, payload )
         }
     },
     actions:{
         async addInput({commit}, payload){
-            commit('addInput', payload)
+                commit('addInput', payload)
         },
         async saveTodo({commit}, payload){
-            commit('saveTodo', payload)
+                commit('saveTodo', payload)
         },
         async modalOpen({commit}){
             commit('modalOpen')
         },
         async modalClose({commit}){
-            commit('modalClose')
+                commit('modalClose')
         },
         async modalDeleteOpen({commit}){
             commit('modalDeleteOpen')
         },
         async modalDeleteClose({commit}){
-            commit('modalDeleteClose')
+                commit('modalDeleteClose')
         },
         async deleteTodo({commit}, payload){
-        
-            commit('deleteTodo', payload)
+
+                commit('deleteTodo', payload)
         },
         async idTodoAdd({commit}, payload){
-            commit('idTodoAdd', payload)
+                commit('idTodoAdd', payload)
         },
         async editTodo({commit}, payload){
-            commit('editTodo', payload)
+                commit('editTodo', payload)
         }
     },
     getters:{
         todoGet(state){
-            state.todos = JSON.parse(localStorage.getItem("todos"))
-            return state.todos 
+                state.todos = JSON.parse(localStorage.getItem("todos"))
+                return state.todos
         },
         inputTodo(state){
-            return state.todos 
+                return state.todos
         },
         modalOpen(state){
-            return state.modalOpen
+                return state.modalOpen
         },
         modalDelete(state){
-            return state.modalDelete
+                return state.modalDelete
         },
         getIdTodo(state){
-            return state.idTodo
+                return state.idTodo
         },
         getIdUui(){
             console.log(uuidv4);
         },
         getTodoId(state){
-           return id =>{
-            const state1 = state.todos.find(todo=> todo.idTodo.toString() == id.toString())
-            return state1
-           }
+            return id =>{
+                return state.todos.find(todo=> todo.idTodo.toString() == id.toString())
+            }
         }
     }
 }

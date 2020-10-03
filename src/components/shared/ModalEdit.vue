@@ -1,26 +1,24 @@
 <template>
     <div class="wrapper">
-        <button @click="cancelModal"> CANCEL</button>
+        <button @click="cancelMethod"> CANCEL</button>
         <button @click="deleteTodo">OK</button>
     </div>
 </template>
 
 <script>
- export default{
-       methods:{
-           cancelModal(){
-               this.$emit('cancelModal')
-           },
-           deleteTodo(){
-               this.$emit('deleteTodo')
-               this.cancelModal()
-           }
-       }
-
-   }
-
+export default {
+    methods:{
+        cancelMethod(){
+            this.$emit('close')
+        },
+        deleteTodo(){
+            this.$emit('edit')
+            this.$emit('close')
+        }
+    }
+}
 </script>
-  
+
 <style scoped>
     .wrapper{
         position: absolute;

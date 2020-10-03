@@ -13,7 +13,6 @@ const routes = [
     {
         path:'/edit/:id',
         props:true,
-       
         name: 'edit',
         component: EditTodo
     },
